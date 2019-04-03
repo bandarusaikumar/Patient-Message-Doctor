@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: saikumar
+Build-Jdk: 11.0.2
+Implementation-Title: stress
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.stress.app
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/stress
+Created-By: Maven Integration for Eclipse
+
