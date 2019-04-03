@@ -1,5 +1,6 @@
 package com.stress.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class MessageService {
 	
 	public Message updateMessage(Message message) {
 		return repo.saveAndFlush(message);
+	}
+	
+	public List<Message> getAllMessages() {
+		List<Message> list = new ArrayList<>();
+		repo.findAll().forEach(e -> list.add(e));
+		return list;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.stress.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,12 +27,21 @@ public class MessageController {
 		return "<h1>Welcome to Aged Care Management System</h1>";
 	}
 	
-	@RequestMapping(value="/message/add",method = RequestMethod.GET)
+	@RequestMapping(value="/messages",method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	void createMessage() throws Exception{
+	String getAllMessages() throws Exception{
+		List<Message> list = service.getAllMessages();
+		return list.toString();
+	}
+	
+	@RequestMapping(value="/message/add/{sender}/{receiver}/{info}",method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	String createMessage(@PathVariable int sender, @PathVariable int receiver,@PathVariable String info) throws Exception{
 		Message message = new Message();
-		message.setId(123);
-		service.createMessage(message);
+		message.setSender(sender);
+		message.setReceiver(receiver);
+		message.setGetInformation(info);
+		return service.createMessage(message).toString();
 	}
 	
 	@RequestMapping(value="/message/updatemessage/{id}",method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE)
