@@ -25,9 +25,11 @@ public class MessageController {
 		return "<h1>Welcome to Aged Care Management System</h1>";
 	}
 	
-	@RequestMapping(value="/message/add",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/message/add",method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	void createMessage(@RequestBody Message message) throws Exception{
+	void createMessage() throws Exception{
+		Message message = new Message();
+		message.setId(123);
 		service.createMessage(message);
 	}
 	
